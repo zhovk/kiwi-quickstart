@@ -20,6 +20,7 @@ message(STATUS "Using C standard: ${CMAKE_C_STANDARD}")
 include(FetchContent)
 
 # Set the base directory for external dependencies
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(FETCHCONTENT_BASE_DIR "${CMAKE_BINARY_DIR}/external")
 set(FETCHCONTENT_UPDATES_DISCONNECTED ON)
 
@@ -61,7 +62,7 @@ message(STATUS "Fetching flecs from GitHub...")
 FetchContent_MakeAvailable(flecs spdlog Catch2 SFML)
 
 # Define source files and create the executable
-file(GLOB_RECURSE KiwiQuickstart_SRCS "src/*.cpp")
+file(GLOB_RECURSE KiwiQuickstart_SRCS "src/**.cpp")
 
 # Create the executable first
 add_executable(KiwiQuickstartExecutable ${KiwiQuickstart_SRCS})
@@ -74,7 +75,7 @@ target_include_directories(
 )
 
 # Link external dependencies to the executable
-target_link_libraries(KiwiQuickstartExecutable PRIVATE spdlog::spdlog)
+target_link_libraries(KiwiQuickstartExecutable PRIVATE spdlog::spdlog flecs SFML::Graphics)
 
 # Ensure C++20 (or higher) is enabled for SFML
 target_compile_features(KiwiQuickstartExecutable PRIVATE cxx_std_20)
