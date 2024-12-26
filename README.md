@@ -63,7 +63,3 @@ KiwiQuickstart is a C++ project that demonstrates the setup of a simple applicat
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-This description provides an overview of the project, its dependencies, setup instructions, and relevant details about its features and structure. You can adjust or expand it further based on your needs!
